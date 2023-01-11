@@ -10,9 +10,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/download', function(req, res, next) {
   const url = req.query.url;
+  const options = { filter: 'audioandvideo' };
   const videoName = 'video.mp4';
   const writeStream = fs.createWriteStream(videoName);
-  ytdl(url).pipe(writeStream);
+  ytdl(url, options).pipe(writeStream);
 
   res.send('it worked!');
 });

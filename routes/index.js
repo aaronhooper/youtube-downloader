@@ -12,10 +12,9 @@ router.get('/download', function(req, res, next) {
   const url = req.query.url;
   const options = { filter: 'audioandvideo' };
   const videoName = 'video.mp4';
-  const writeStream = fs.createWriteStream(videoName);
-  ytdl(url, options).pipe(writeStream);
-
-  res.send('it worked!');
+  res.setHeader('content-type', 'video/mp4');
+  res.setHeader('content-disposition', `attachment; filename="${videoName}"`);
+  ytdl(url, options).pipe(res);
 });
 
 module.exports = router;

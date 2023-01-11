@@ -8,7 +8,9 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-    <input type="text">
-    <button>Download</button>
+    <form action="download" method='GET'>
+      <input type="text" name="url">
+      <input type="submit" value="Download">
+    </form>
   </body>
 </html>
